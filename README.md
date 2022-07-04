@@ -10,6 +10,5 @@ typically RGB -> BGR, BGR -> Grayscale and BGR -> RGB
  This is a machine learning algorithm and uses deep neural networks
  
  **Dataset** : coco.names - for labeling and segmentation.
- 
  **SSD (Single-Shot multibox Detection)**: ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt -  for object detection
  
