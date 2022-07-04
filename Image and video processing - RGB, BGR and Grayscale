@@ -1,0 +1,75 @@
+#Image sampling in openCV
+
+import cv2
+import os
+import matplotlib
+from matplotlib import pyplot as plt
+
+# Read image
+img=cv2.imread("C:\\Users\\ramak\\opencv-4.6.0\\data\\images\\baboon.jpg")
+
+# Display Image (in the form of array) 
+img
+
+#Displays Image - in BGR(deafult)
+plt.imshow(img)
+
+#Displays Image- in RGB
+recolor=cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+plt.imshow(recolor)
+
+#Displays Image - in Grayscale
+gray=cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+plt.imshow(gray)
+
+#To download or write-out the same
+cv2.imwrite('grayscale.jpg',img_grayscale)
+
+
+------------X-X-X-----------------------
+
+
+#Video Sampling in openCV
+
+# Read Video
+cap=cv2.VideoCapture(os.path.join('butterF.mp4'))
+ret, frame = cap.read()
+
+# Ret (Return) is True if video is read successfully else false
+ret
+
+# Frame is a particular set if RGB blocks in video (Image extracted from  a video)
+frame
+
+# Dispalys frame - image
+plt.imshow(frame)
+
+# Displays frame details - array
+cap.read()
+
+# Get FPS
+cap.get(cv2.CAP_PROP_FRAME_COUNT)
+
+#To Display video in gray scale
+
+cap=cv2.VideoCapture(os.path.join('butterF.mp4'))
+
+# Loop to get access all frames
+for frame_idx in range(int(cap.get(cv2.CAP_PROP_FRAME_COUNT))):
+
+    #print(frame_idx)
+    ret, frame = cap.read()
+    
+    # To display gray scale video
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    cv2.imshow('Video Player', gray)
+    
+    # To display raw video
+    #cv2.imshow('Video Player',frame)
+    
+    # Press q to quit video
+    if cv2.waitKey(10) & 0xFF == ord('q'):
+       break
+
+cap.release()
+cv2.destroyAllWindows()
